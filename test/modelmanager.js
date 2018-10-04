@@ -28,6 +28,7 @@ const ParticipantDeclaration = require('../lib/introspect/participantdeclaration
 const Serializer = require('../lib/serializer');
 const TransactionDeclaration = require('../lib/introspect/transactiondeclaration');
 const TypeNotFoundException = require('../lib/typenotfoundexception');
+const util = require('./composer/systemmodelutility');
 
 const chai = require('chai');
 const should = chai.should();
@@ -49,6 +50,7 @@ describe('ModelManager', () => {
     beforeEach(() => {
         sandbox = sinon.sandbox.create();
         modelManager = new ModelManager();
+        util.addComposerSystemModels(modelManager);
         mockSystemModelFile = sinon.createStubInstance(ModelFile);
         mockSystemModelFile.isLocalType.withArgs('Asset').returns(true);
         mockSystemModelFile.getNamespace.returns('org.hyperledger.composer.system');

@@ -18,6 +18,7 @@ const ModelManager = require('../../lib/modelmanager');
 const Concept = require('../../lib/model/concept');
 const Serializer = require('../../lib/serializer');
 const Factory = require('../../lib/factory');
+const util = require('../composer/systemmodelutility');
 
 const fs = require('fs');
 
@@ -42,6 +43,7 @@ describe('Concept', function () {
 
     before(function () {
         modelManager = new ModelManager();
+        util.addComposerSystemModels(modelManager);
     });
 
     beforeEach(function () {

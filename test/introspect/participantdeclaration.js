@@ -17,6 +17,7 @@
 const ModelFile = require('../../lib/introspect/modelfile');
 const ModelManager = require('../../lib/modelmanager');
 const fs = require('fs');
+const util = require('../composer/systemmodelutility');
 
 require('chai').should();
 
@@ -26,6 +27,7 @@ describe('ParticipantDeclaration', () => {
 
     beforeEach(() => {
         modelManager = new ModelManager();
+        util.addComposerSystemModels(modelManager);
     });
 
     let loadParticipantDeclaration = (modelFileName) => {

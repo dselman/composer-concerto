@@ -19,6 +19,7 @@ const ClassDeclaration = require('../../lib/introspect/classdeclaration');
 const ModelFile = require('../../lib/introspect/modelfile');
 const ModelManager = require('../../lib/modelmanager');
 const IntrospectUtils = require('./introspectutils');
+const util = require('../composer/systemmodelutility');
 
 require('chai').should();
 const sinon = require('sinon');
@@ -32,6 +33,7 @@ describe('TransactionDeclaration', () => {
     beforeEach(() => {
         sandbox = sinon.sandbox.create();
         modelManager = new ModelManager();
+        util.addComposerSystemModels(modelManager);
         mockSystemTransaction = sinon.createStubInstance(TransactionDeclaration);
         mockSystemTransaction.getFullyQualifiedName.returns('org.hyperledger.composer.system.Transaction');
         mockClassDeclaration = sinon.createStubInstance(ClassDeclaration);

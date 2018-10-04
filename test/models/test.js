@@ -21,6 +21,7 @@ const RelationshipDeclaration = require('../../lib/introspect/relationshipdeclar
 const Serializer = require('../../lib/serializer');
 const TypeNotFoundException = require('../../lib/typenotfoundexception');
 const fs = require('fs');
+const util = require('../composer/systemmodelutility');
 
 require('chai').should();
 
@@ -31,6 +32,7 @@ describe('Test Model', function(){
 
             // create and populate the ModelManager with a model file
             let modelManager = new ModelManager();
+            util.addComposerSystemModels(modelManager);
             modelManager.should.not.be.null;
             modelManager.clearModelFiles();
 

@@ -16,6 +16,7 @@
 
 const ModelManager = require('../../lib/modelmanager');
 const Resource = require('../../lib/model/resource');
+const util = require('../composer/systemmodelutility');
 
 const chai = require('chai');
 chai.should();
@@ -40,6 +41,7 @@ describe('Resource', function () {
 
     beforeEach(function () {
         modelManager = new ModelManager();
+        util.addComposerSystemModels(modelManager);
         modelManager.addModelFile(levelOneModel);
     });
 
