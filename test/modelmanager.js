@@ -136,18 +136,6 @@ describe('ModelManager', () => {
             res.should.equal(mf1);
         });
 
-        it('should not be possible to add a system model file', ()=>{
-            (() => {
-                modelManager.addModelFile(mockSystemModelFile, null, null, true);
-            }).should.throw(/Cannot add a model file with the reserved system namespace/);
-        });
-
-        it('should not be possible to add a system model file (via string)', ()=>{
-            (() => {
-                modelManager.addModelFile('namespace org.hyperledger.composer.system','fakesysnamespace.cto', null, true);
-            }).should.throw(/Cannot add a model file with the reserved system namespace/);
-        });
-
         it('should return error for duplicate namespaces for a string', () => {
             modelManager.addModelFile(modelBase);
             let mf1 = sinon.createStubInstance(ModelFile);

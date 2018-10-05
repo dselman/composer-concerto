@@ -19,6 +19,7 @@ const Property = require('../lib/introspect/property');
 const Typed = require('../lib/model/identifiable');
 const ModelManager = require('../lib/modelmanager');
 const ModelUtil = require('../lib/modelutil');
+const util = require('./composer/systemmodelutility');
 
 require('chai').should();
 const sinon = require('sinon');
@@ -114,6 +115,7 @@ describe('ModelUtil', function () {
 
         beforeEach(() => {
             modelManager = new ModelManager();
+            util.addComposerSystemModels(modelManager);
             modelManager.addModelFile(`namespace org.acme.baz
             asset Foo identified by fooId {
                 o String fooId
