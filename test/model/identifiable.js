@@ -20,7 +20,7 @@ const sinon = require('sinon');
 const chai = require('chai');
 chai.should();
 chai.use(require('chai-things'));
-const util = require('../composer/systemmodelutility');
+const Util = require('../composer/systemmodelutility');
 
 describe('Identifiable', function () {
 
@@ -28,7 +28,7 @@ describe('Identifiable', function () {
     let classDecl;
     before(function () {
         modelManager = new ModelManager();
-        util.addComposerSystemModels(modelManager);
+        Util.addComposerSystemModels(modelManager);
         modelManager.addModelFile(`namespace com.composer
         participant Farmer identified by farmerId {
             o String farmerId

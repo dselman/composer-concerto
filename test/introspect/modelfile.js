@@ -26,7 +26,7 @@ const ParseException = require('../../lib/introspect/parseexception');
 const parser = require('../../lib/introspect/parser');
 const fs = require('fs');
 const path = require('path');
-const util = require('../composer/systemmodelutility');
+const Util = require('../composer/systemmodelutility');
 
 const chai = require('chai');
 const should = chai.should();
@@ -41,7 +41,7 @@ describe('ModelFile', () => {
 
     beforeEach(() => {
         modelManager = new ModelManager();
-        util.addComposerSystemModels(modelManager);
+        Util.addComposerSystemModels(modelManager);
         sandbox = sinon.sandbox.create();
     });
 
@@ -479,7 +479,7 @@ describe('ModelFile', () => {
 
         before(() => {
             modelManager = new ModelManager();
-            util.addComposerSystemModels(modelManager);
+            Util.addComposerSystemModels(modelManager);
             modelFile = modelManager.addModelFile(`namespace org.acme
             asset MyAsset identified by assetId {
                 o String assetId

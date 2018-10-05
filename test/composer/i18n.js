@@ -23,7 +23,7 @@ const Factory = require('./../../lib/factory');
 const Serializer = require('./../../lib/serializer');
 const ModelManager = require('./../../lib/modelmanager');
 const ModelUtil = require('./../../lib/modelutil');
-const util = require('../composer/systemmodelutility');
+const Util = require('../composer/systemmodelutility');
 
 describe('Globalization', function() {
 
@@ -112,7 +112,7 @@ describe('Globalization', function() {
 
                 // create and polulate the modelManager with a model file
                 const modelManager = new ModelManager();
-                util.addComposerSystemModels(modelManager);
+                Util.addComposerSystemModels(modelManager);
 
                 let fileName = './test/composer/models/classdeclaration/validate/foo-identifiernotproperty.cto';
                 let invalidFile = fs.readFileSync(fileName, 'utf8');
@@ -132,7 +132,7 @@ describe('Globalization', function() {
 
                 // create and polulate the modelManager with a model file
                 const modelManager = new ModelManager();
-                util.addComposerSystemModels(modelManager);
+                Util.addComposerSystemModels(modelManager);
 
                 let fileName = './test/composer/models/classdeclaration/validate/foo-identifiernotstring.cto';
                 let invalidFile = fs.readFileSync(fileName, 'utf8');
@@ -163,7 +163,7 @@ describe('Globalization', function() {
 
             // create and polulate the modelManager with a model file
             const modelManager = new ModelManager();
-            util.addComposerSystemModels(modelManager);
+            Util.addComposerSystemModels(modelManager);
 
             let fileName = './test/composer/models/modelfile/resolvetype/foo-undecltype.cto';
             let invalidFile = fs.readFileSync(fileName, 'utf8');
@@ -202,7 +202,7 @@ describe('Globalization', function() {
                 }).should.equal('ModelFile for namespace foo has not been registered with the ModelManager');
 
                 const modelManager = new ModelManager();
-                util.addComposerSystemModels(modelManager);
+                Util.addComposerSystemModels(modelManager);
 
                 expect(function() {
                     let factory = new Factory(modelManager);
@@ -218,7 +218,7 @@ describe('Globalization', function() {
                 }).should.equal('Type bar is not declared in namespace foo');
 
                 const modelManager = new ModelManager();
-                util.addComposerSystemModels(modelManager);
+                Util.addComposerSystemModels(modelManager);
 
                 let fileName = './test/composer/models/factory/newinstance/foo-typenotdeclaredinns.cto';
                 let file = fs.readFileSync(fileName, 'utf8');
@@ -255,7 +255,7 @@ describe('Globalization', function() {
                 }).should.equal('Type bar is not declared in namespace foo');
 
                 const modelManager = new ModelManager();
-                util.addComposerSystemModels(modelManager);
+                Util.addComposerSystemModels(modelManager);
 
                 let fileName = './test/composer/models/factory/newinstance/foo-typenotdeclaredinns.cto';
                 let file = fs.readFileSync(fileName, 'utf8');
@@ -277,7 +277,7 @@ describe('Globalization', function() {
                 }).should.equal('ModelFile for namespace foo has not been registered with the ModelManager');
 
                 const modelManager = new ModelManager();
-                util.addComposerSystemModels(modelManager);
+                Util.addComposerSystemModels(modelManager);
 
                 expect(function() {
                     let factory = new Factory(modelManager);
@@ -293,7 +293,7 @@ describe('Globalization', function() {
                 }).should.equal('Type bar is not declared in namespace foo');
 
                 const modelManager = new ModelManager();
-                util.addComposerSystemModels(modelManager);
+                Util.addComposerSystemModels(modelManager);
 
                 let fileName = './test/composer/models/factory/newrelationship/foo-typenotdeclaredinns.cto';
                 let file = fs.readFileSync(fileName, 'utf8');
@@ -318,7 +318,7 @@ describe('Globalization', function() {
                 }).should.equal('No registered namespace for type bar in foo');
 
                 const modelManager = new ModelManager();
-                util.addComposerSystemModels(modelManager);
+                Util.addComposerSystemModels(modelManager);
 
                 expect(function() {
                     modelManager.resolveType('foo', 'bar');
@@ -369,7 +369,7 @@ describe('Globalization', function() {
             formatter().should.equal('Factory cannot be null');
 
             const modelManager = new ModelManager();
-            util.addComposerSystemModels(modelManager);
+            Util.addComposerSystemModels(modelManager);
             expect(function() {
                 new Serializer(null, modelManager);
             }).to.throw(Error, 'Factory cannot be null');
@@ -380,7 +380,7 @@ describe('Globalization', function() {
             formatter().should.equal('Serializer.toJSON only accepts Concept, Event, Asset, Participant or Transaction.');
 
             const modelManager = new ModelManager();
-            util.addComposerSystemModels(modelManager);
+            Util.addComposerSystemModels(modelManager);
             expect(function() {
                 let serializer = new Serializer(true, modelManager);
                 serializer.toJSON({});

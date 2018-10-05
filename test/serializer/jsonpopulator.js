@@ -22,7 +22,7 @@ const Relationship = require('../../lib/model/relationship');
 const Resource = require('../../lib/model/resource');
 const TypedStack = require('../../lib/serializer/typedstack');
 const TypeNotFoundException = require('../../lib/typenotfoundexception');
-const util = require('../composer/systemmodelutility');
+const Util = require('../composer/systemmodelutility');
 
 require('chai').should();
 const sinon = require('sinon');
@@ -39,7 +39,7 @@ describe('JSONPopulator', () => {
 
     before(() => {
         modelManager = new ModelManager();
-        util.addComposerSystemModels(modelManager);
+        Util.addComposerSystemModels(modelManager);
         modelManager.addModelFile(`
             namespace org.acme
             asset MyAsset1 identified by assetId {

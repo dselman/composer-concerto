@@ -18,7 +18,7 @@ const EventDeclaration = require('../../lib/introspect/eventdeclaration');
 const ModelFile = require('../../lib/introspect/modelfile');
 const ModelManager = require('../../lib/modelmanager');
 const fs = require('fs');
-const util = require('../composer/systemmodelutility');
+const Util = require('../composer/systemmodelutility');
 
 require('chai').should();
 const sinon = require('sinon');
@@ -63,6 +63,7 @@ describe('EventDeclaration', () => {
         mockSystemEvent = sinon.createStubInstance(EventDeclaration);
         mockSystemEvent.getFullyQualifiedName.returns('org.hyperledger.composer.system.Event');
         mockModelManager.getSystemTypes.returns([mockSystemEvent]);
+        mockModelManager.getSystemModelTable.returns(Util.getSystemModelTable());
     });
 
     afterEach(() => {
@@ -86,7 +87,7 @@ describe('EventDeclaration', () => {
                 o String euid
             }`;
             const modelManager = new ModelManager();
-            util.addComposerSystemModels(modelManager);
+            Util.addComposerSystemModels(modelManager);
             (()=>{
                 modelManager.addModelFile(model, 'awesome.cto' );
             })
@@ -102,7 +103,7 @@ describe('EventDeclaration', () => {
                 o String euid
             }`;
             const modelManager = new ModelManager();
-            util.addComposerSystemModels(modelManager);
+            Util.addComposerSystemModels(modelManager);
             const modelFile = modelManager.addModelFile(model, 'awesome.cto' );
 
             let ed = modelFile.getEventDeclaration('E');
@@ -121,7 +122,7 @@ describe('EventDeclaration', () => {
             const fileName = 'test/data/model/events.cto';
             let modelDefinitions = fs.readFileSync(fileName, 'utf8');
             const modelManager = new ModelManager();
-            util.addComposerSystemModels(modelManager);
+            Util.addComposerSystemModels(modelManager);
             const modelFile = modelManager.addModelFile(modelDefinitions, fileName );
 
             const abstractEvent = modelFile.getEventDeclaration('AbstractEvent');

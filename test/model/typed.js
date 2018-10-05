@@ -16,7 +16,7 @@
 
 const ModelManager = require('../../lib/modelmanager');
 const Typed = require('../../lib/model/typed');
-const util = require('../composer/systemmodelutility');
+const Util = require('../composer/systemmodelutility');
 
 require('chai').should();
 
@@ -29,7 +29,7 @@ describe('Typed', () => {
 
     beforeEach(() => {
         modelManager = new ModelManager();
-        util.addComposerSystemModels(modelManager);
+        Util.addComposerSystemModels(modelManager);
         modelManager.addModelFile(`
         namespace org.acme.base
         abstract asset BaseAsset {

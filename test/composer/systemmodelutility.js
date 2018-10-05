@@ -14,11 +14,14 @@
 
 'use strict';
 
-const debug = require('debug')('concerto:modelmanager');
+const debug = require('debug')('concerto:systemmodelutility');
 
 const SYSTEM_MODELS = require('../../lib/systemmodel');
+const ModelUtil = require('../../lib/modelutil');
+
 
 module.exports = {
+
     addComposerSystemModels: (modelManager) => {
         SYSTEM_MODELS.forEach((SYSTEM_MODEL) => {
             debug('addComposerSystemModels', SYSTEM_MODEL);
@@ -28,4 +31,5 @@ module.exports = {
         // now validate all the models
         modelManager.validateModelFiles();
     },
+    getSystemModelTable: () => ModelUtil.getIdentitySystemModelTable()
 };

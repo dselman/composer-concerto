@@ -21,7 +21,7 @@ const RelationshipDeclaration = require('../../lib/introspect/relationshipdeclar
 const Serializer = require('../../lib/serializer');
 const TypeNotFoundException = require('../../lib/typenotfoundexception');
 const fs = require('fs');
-const util = require('../composer/systemmodelutility');
+const Util = require('../composer/systemmodelutility');
 
 require('chai').should();
 
@@ -32,7 +32,7 @@ describe('Test Model', function(){
 
             // create and populate the ModelManager with a model file
             let modelManager = new ModelManager();
-            util.addComposerSystemModels(modelManager);
+            Util.addComposerSystemModels(modelManager);
             modelManager.should.not.be.null;
             modelManager.clearModelFiles();
 
@@ -71,7 +71,7 @@ describe('Test Model', function(){
 
             // create and populate the ModelManager with a model file
             let modelManager = new ModelManager();
-            util.addComposerSystemModels(modelManager);
+            Util.addComposerSystemModels(modelManager);
             modelManager.should.not.be.null;
             modelManager.clearModelFiles();
 
@@ -139,7 +139,7 @@ describe('Test Model', function(){
 
             // create and populate the ModelManager with a model file
             let modelManager = new ModelManager();
-            util.addComposerSystemModels(modelManager);
+            Util.addComposerSystemModels(modelManager);
             modelManager.should.not.be.null;
             modelManager.clearModelFiles();
 
@@ -224,7 +224,7 @@ describe('Test Model', function(){
     describe('#getModelManager', function() {
         it('check parsing and model manager', function() {
             let modelManager = new ModelManager();
-            util.addComposerSystemModels(modelManager);
+            Util.addComposerSystemModels(modelManager);
             modelManager.should.not.be.null;
 
             let fileName1 = './test/data/model/composer.cto';
@@ -320,7 +320,7 @@ describe('Test Model', function(){
 
             // create and populate the ModelManager with a model file
             let modelManager = new ModelManager();
-            util.addComposerSystemModels(modelManager);
+            Util.addComposerSystemModels(modelManager);
 
             let fileName = './test/data/model/composer.cto';
             let systemModel = fs.readFileSync(fileName, 'utf8');
@@ -350,7 +350,7 @@ describe('Test Model', function(){
 
             // create and populate the ModelManager with a model file
             let modelManager = new ModelManager();
-            util.addComposerSystemModels(modelManager);
+            Util.addComposerSystemModels(modelManager);
 
             let fileName = './test/data/model/dependencies/base/base.cto';
             let baseModel = fs.readFileSync(fileName, 'utf8');
