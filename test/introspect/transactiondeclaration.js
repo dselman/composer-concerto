@@ -46,21 +46,6 @@ describe('TransactionDeclaration', () => {
 
     describe('#validate', () => {
 
-        it('should throw error name is Transaction', () => {
-            const model = `
-            namespace com.test
-
-            transaction Transaction {
-            }`;
-
-            const modelFile = new ModelFile(modelManager, model);
-            const p = modelFile.getTransactionDeclarations()[0];
-
-            (() => {
-                p.validate();
-            }).should.throw(/Transaction is a reserved type name./);
-        });
-
         it('should cover the other error paths', () => {
             const model = `
             namespace org.acme

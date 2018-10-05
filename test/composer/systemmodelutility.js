@@ -16,7 +16,7 @@
 
 const debug = require('debug')('concerto:systemmodelutility');
 
-const SYSTEM_MODELS = require('../../lib/systemmodel');
+const SYSTEM_MODELS = require('./systemmodel');
 const ModelUtil = require('../../lib/modelutil');
 
 

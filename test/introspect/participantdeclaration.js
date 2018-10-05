@@ -53,13 +53,4 @@ describe('ParticipantDeclaration', () => {
         });
     });
 
-    describe('#validate', () => {
-        it('should throw error if system type and name Participant', () => {
-            let p = loadParticipantDeclaration('test/data/parser/participantdeclaration.systypename.cto');
-            (() => {
-                p.validate();
-            }).should.throw(/Participant is a reserved type name./);
-        });
-    });
-
 });
